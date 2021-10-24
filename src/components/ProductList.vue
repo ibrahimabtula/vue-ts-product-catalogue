@@ -79,8 +79,8 @@ export default defineComponent({
 <template>
   <loader v-if="isLoading" />
   <div v-else ref="root">
-    <div class="columns">
-      <div v-for="product in products" :key="product.id" class="column">
+    <div class="product-list">
+      <div v-for="product in products" :key="product.id" class="product">
         <product-list-item :product="product" @click="openDetails(product)" />
       </div>
     </div>
@@ -90,9 +90,6 @@ export default defineComponent({
         Load more
       </button>
     </p>
-    <!-- <modal :is-active="showModal" @close="showModal=false">
-      <product-details />
-    </modal> -->
   </div>
 </template>
 
@@ -101,7 +98,7 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   .button-load-more {
-    // border-radius: 9999px;
+    border-radius: 4px;
     background-color: #fff;
     border-color: #dbdbdb;
     border-width: 1px;
@@ -121,33 +118,33 @@ export default defineComponent({
     border-image-width: 1;
   }
 }
-.columns {
+.product-list {
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   align-items: center;
   grid-gap: 0.5rem;
 
-  .column {
+  .product {
     height: 100%;
     display: block;
   }
 }
 
 @media (max-width: 768px) {
-  .columns {
+  .product-list {
     grid-template-columns: repeat(1, minmax(20rem, 1fr));
   }
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .columns {
+  .product-list {
     grid-template-columns: repeat(2, minmax(20rem, 1fr));
   }
 }
 
 @media (min-width: 1024px) and (max-width: 1408px) {
-  .columns {
+  .product-list {
     grid-template-columns: repeat(3, minmax(20rem, 1fr));
   }
 }
