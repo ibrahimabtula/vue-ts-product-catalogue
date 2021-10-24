@@ -2,5 +2,5 @@
 
 ```JavaScript
 yarn
-yanr dev
+yarn dev
 ```
